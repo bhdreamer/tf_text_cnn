@@ -25,25 +25,26 @@
 ### 支持的模型
   
     CBHGModel           --- 继承BasicModel， 支持CBHG模型  
-    DilatedCNNModel     --- 继承BasicModel， 支持id_cnn_block  
+    DilatedCNNModel     --- 继承BasicModel， 支持id_cnn_block 
+    DenselyCNNModel     --- 继承BasicModel,  支持multi-gram densely cnn with max-pooling and highway
     MultiSpeakerModel   --- 默认继承DilatedCNNModel, 支持多说话人tag数据(@bianyanyao);可继承于其他模型  
 
 ### 数据格式
 ```  
 data_fea:  
 
-特征1 特征2 ... 特征N       （第一句）  
+特征1 特征2 ... 特征N        （第一句）  
 特征1 特征2 ... 特征N  
 ...  
 特征1 特征2 ... 特征N  
-                          （空一行表示断句）  
-特征1 特征2 ... 特征N           （第二句）  
+                              （空一行表示断句）  
+特征1 特征2 ... 特征N         （第二句）  
 特征1 特征2 ... 特征N  
 ...  
 data_tar:  
 
-标签1 标签2 ... 标签M1         （第一句）  
-标签1 标签2 ... 标签M2         （第二句）  
+标签1 标签2 ... 标签M1        （第一句）  
+标签1 标签2 ... 标签M2        （第二句）  
 ...  
 ```
 ### mapping_dict  
