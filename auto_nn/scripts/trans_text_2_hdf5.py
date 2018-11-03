@@ -58,6 +58,7 @@ def main(cfg_file, data_info):
     trans_text_2_hdf5(data_info, dict_info, mean_var_path)
 
 
+
 if __name__ == "__main__":
     root_dir = "/Users/niezhipeng/MyProgram/Python Scripts/baidu/personal-code-nzp/tf_training"
     cfg_file = os.path.join(root_dir, "conf/prosody_id_cnn_block.json")
