@@ -1,0 +1,342 @@
+{
+    "device_id"             : "2",
+    "work_space"            : "../",                       //工作目录
+    "output_dir"            : "",
+    "save_tag"              : "prosody_multi_speaker_id_cnn_3_block_112_121_123_wn_train_mix11_batch_160_layer0_sigmoid_onehot_std_lr_0.0005_dp_0.2_1.0",                          //训练的所有输出文件在"[work_space]/[train_tag]"下
+    "eval_metric"           : ["EvalProsody"],                      //结果评估，list支持multitask，参考tools/text_eval.py，所有支持multitask的list_len必须相同
+    "max_decode_length"     : 512,                                  //句子的最大长度，一般不需修改
+    "train":
+    {
+        "dropout_rate"          : 0.2,
+        "start_epoch"           : 0,                        //起始轮数
+        "epochs"                : 10,                               //训练轮数
+        "batch_size"            : 160,
+        "dev_batch_size"        : 512,
+        "train_dataset"         : ["f11"],
+        //"dev_dataset"           : ["comm", "f11", "gezi"],
+        "dev_dataset"           : ["train"],
+        "init_model"            : "",                               //做自适应或做预测等需要加载已有模型时，路径写在这里
+        "optim_name"            : "AdamOptimizer",                  // 默认
+        "optim_params"          :
+        {
+            "learning_rate"     : 0.0005,
+            "beta1"             : 0.9,                              // 默认
+            "beta2"             : 0.999,                            // 默认
+            "epsilon"           : 1e-08,                            // 默认
+            "use_locking"       : false,                            // 默认
+            "use_clip"          : true,                              // 是否应用 clip gradient 
+            "decay_lr_steps"    : 50000,
+            "decay_lr_rate"     : 0.7,
+            "max_clip_value"    : 5,
+            "max_clip_norm"     : 1
+        }
+    },
+    "test":
+    {
+        "batch_size"            : 120,
+        "test_dataset"          : ["f11_test", "gezi_test", "miduo_test"],
+        "init_model"            : "../output/prosody_multi_speaker_id_cnn_3_block_train_mix11_lr_0.0001_dp_0.2_clip/model/model-75",
+        "output_dir"            : "../output/prosody_multi_speaker_id_cnn_3_block_test/"
+    },
+    "data_info":
+    {
+        "train_data_info":  
+        {
+            "base_dir"      : "../data/byy_data/data",                //数据根目录
+            "fea_data_name" : "prosody_train_mix11.fea",                 //features
+            "tar_data_names": ["prosody_train_mix11.lab"],                      //labels, list支持multitask，所有支持multitask的list_len必须相同
+            "encoding" : "hdf5",
+            "hdf5_name"     : "train.hdf5"                      //生成的二进制文件名，一般不需要修改
+        },
+        "comm_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_test.fea",
+            "tar_data_names": ["prosody_test.lab"],
+            "encoding" : "hdf5",
+            "hdf5_name"     : "dev_comm.hdf5"
+        },
+        "f7_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_f7.fea",
+            "tar_data_names": ["prosody_dev_f7.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "dev_f7.hdf5"
+        },
+        "f11_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_f11.fea",
+            "tar_data_names": ["prosody_dev_f11.lab"],
+            "encoding" : "hdf5",
+            "hdf5_name"     : "dev_f11.hdf5"
+        },
+        "f20_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_f20.fea",
+            "tar_data_names": ["prosody_dev_f20.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "dev_f20.hdf5"
+        },
+        "f28_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_f28.fea",
+            "tar_data_names": ["prosody_dev_f28.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "dev_f28.hdf5"
+        },
+        "m15_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_m15.fea",
+            "tar_data_names": ["prosody_dev_m15.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "dev_m15.hdf5"
+        },
+        "yyjw_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_yyjw.fea",
+            "tar_data_names": ["prosody_dev_yyjw.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "dev_yyjw.hdf5"
+        },
+        "gezi_data_info":    
+        {
+            "base_dir"      : "../data/byy_data/data",
+            "fea_data_name" : "prosody_dev_gezi.fea",
+            "tar_data_names": ["prosody_dev_gezi.lab"],
+            "encoding" : "hdf5",
+            "hdf5_name"     : "dev_gezi.hdf5"
+        },
+        "adapt_data_info":  
+        {
+            "base_dir"      : "../data/20180319_f11/test_file",
+            "fea_data_name" : "tag_shuffle_adapt_test.feature",
+            "tar_data_names": ["tag_shuffle_adapt_test.target"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "adapt.hdf5"
+        },
+        "novel_data_info":  
+        {
+            "base_dir"      : "",
+            "fea_data_name" : "",
+            "tar_data_names": [""],
+            "encoding" : "gbk",
+            "hdf5_name"     : "novel.hdf5"
+        },
+        "f11_test_data_info":
+        {
+            "base_dir"      : "../data/byy_data/test",
+            "fea_data_name" : "F11_ceshi.fea",
+            "tar_data_names": ["F11_ceshi.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "F11_ceshi.hdf5"
+        },
+        "gezi_test_data_info":
+        {
+            "base_dir"      : "../data/byy_data/test",
+            "fea_data_name" : "gezi_abtest.fea",
+            "tar_data_names": ["gezi_abtest.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "gezi_abtest.hdf5"
+        },
+        "miduo_test_data_info":
+        {
+            "base_dir"      : "../data/byy_data/test",
+            "fea_data_name" : "miduo-A300.fea",
+            "tar_data_names": ["miduo-A300.lab"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "miduo-A300.hdf5"
+        }
+    },
+    "dict":
+    {
+        "base_dir"          : "../dict",                   //特征词典根目录
+        "word_dict"         : "prosody_word_mix11.dict",
+        "wordvec_dict"      : "word2vec_decompress.feat",
+        "token_dict"        : "seg_token.dict",
+        "prop_dict"         : "seg_prop.dict",
+        "prosody_dict"      : "prosody_label_new.dict",
+        "feature_names"     : ["word", "token", "prop"],     //特征列表，与文本数据相一致
+        "mark_names"        : ["prosody"]                       //label列表，支持multitask，所有支持multitask的list_len必须相同
+    },
+    "model": 
+    {
+        "name"              : "MultiSpeakerModel",
+        "losses":                                       // 与task_num一致, 定义每个任务的loss的参数
+        [                               
+            {
+                "type"          : "softmax_ce",
+                "alpha"         : [1.0, 1.0, 1.0, 0.65, 1.0, 1.0],
+                "label_smooth"  : 0.0,
+                "use_crf"       : false
+            }
+        ],
+        "task_weights"          : [1.0, 1.0, 1.0],        //任务权重，multitask用，所有支持multitask的list_len必须相同
+        "speaker_num"       : 11,
+        "domain_sep"        : true,
+        "mean_var_path"     : "../data/prosody_128dim_common_f11_stdvar.mean_var",                                                         //参考models/text_model.py
+        "hidden_layer" :                                        //隐含层：LIST，按列表顺序构建网络
+        [
+            {
+                "layer_type"    : "atrous_conv1d",             //dense layer
+                "kernel_size"   : 1,
+                "channels"      : 256,
+                "dilation_rate" : 1,
+                "activation"    : "sigmoid",
+                "initializer"   : "xavier_normal",
+                "use_bn"        : false,
+                "use_wn"        : true
+            },
+            {
+                "layer_type"    : "id_cnn_block",
+                "residual"      : false,
+                "block_concat"  : false,
+                "block_residual": false,
+                "layers":
+                [
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 1,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    },
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 1,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    },
+                    {
+                        "layer_type"    : "atrous_conv1d", 
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 2,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    }
+                ]
+            },
+            {
+                "layer_type"    : "id_cnn_block",
+                "residual"      : false,
+                "block_concat"   : false,
+                "block_residual": false,
+                "layers":
+                [
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 1,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    },
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 2,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    },
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 1,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    }
+                ]
+            },
+            {
+                "layer_type"    : "id_cnn_block",
+                "residual"      : false,
+                "block_concat"   : false,
+                "block_residual": false,
+                "layers":
+                [
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 1,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    },
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 2,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    },
+                    {
+                        "layer_type"    : "atrous_conv1d",
+                        "kernel_size"   : 3,
+                        "channels"		: 256,
+                        "dilation_rate"	: 3,
+                        "activation"    : "relu",
+                        "initializer"   : "he_normal",
+                        "use_bn"        : false,
+                        "use_wn"        : true
+                    }
+                ]
+            },
+            {
+                "layer_type"    : "rnn",            //RNN
+                "struct"        : "bi",             //bi --- 双向, uni or ""--- 单向
+                "cell_name"     : "GRUCell",
+                "cell_params"   :
+                {
+                    "num_units"         : 64,
+                    "use_peepholes"     : true,
+                    "forget_bias"       : 0.0,
+                    "num_proj"          : 128,
+                    "activation"        : "tanh"
+                },
+                "dropout_params":
+                {
+                    "input_keep_prob"   : 0.9,
+                    "output_keep_prob"  : 0.9,
+                    "state_keep_prob"   : 0.95,
+                    "variational_recurrent" : true
+                }
+            }
+        ],
+        "output_layer"  :                                    //输出层list，支持multitask，所有支持multitask的list_len必须相同
+        [
+            {
+                "layer_type"    : "fc",
+                "num_units"     : 64,
+                "activation"    : "linear"
+            }
+        ]
+    }
+}

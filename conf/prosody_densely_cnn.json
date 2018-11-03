@@ -1,0 +1,204 @@
+{
+    "device_id"             : "3",
+    "work_space"            : "../",                       //工作目录
+    "output_dir"            : "",
+    "save_tag"              : "prosody_densely_cnn_test",                          //训练的所有输出文件在"[work_space]/[train_tag]"下
+    "eval_metric"           : ["EvalProsody"],                      //结果评估，list支持multitask，参考tools/text_eval.py，所有支持multitask的list_len必须相同
+    "max_decode_length"     : 512,                                  //句子的最大长度，一般不需修改
+    "train":
+    {
+        "dropout_rate"          : 0.1,
+        "start_epoch"           : 0,                        //起始轮数
+        "epochs"                : 20,                               //训练轮数
+        "batch_size"            : 160,
+        "dev_batch_size"        : 512,
+        "train_dataset"         : ["dev"],
+        "dev_dataset"           : ["adapt"],
+        "init_model"            : "",                               //做自适应或做预测等需要加载已有模型时，路径写在这里
+        "optim_name"            : "AdamOptimizer",                  // 默认
+        "optim_params"          :
+        {
+            "learning_rate"     : 0.001,
+            "beta1"             : 0.9,                              // 默认
+            "beta2"             : 0.999,                            // 默认
+            "epsilon"           : 1e-08,                            // 默认
+            "use_locking"       : false,                            // 默认
+            "use_clip"          : true,                              // 是否应用 clip gradient 
+            "decay_lr_steps"    : 1000,
+            "decay_lr_rate"     : 0.9,
+            "max_clip_value"    : 10,
+            "max_clip_norm"     : 5  
+        }
+    },
+    "test":
+    {
+        "batch_size"            : 1024,
+        "test_dataset"          : ["adapt"],
+        "init_model"            : "../output/prosody_cbhg_test/model/model-5",
+        "output_dir"            : "../output/prosody_cbhg_test/prediction"
+    },
+    "data_info":
+    {
+        "train_data_info":  
+        {
+            "base_dir"      : "../data/20180319_f11/train_file/old",                //数据根目录
+            "fea_data_name" : "tag_shuffle_merge_train.feature",                 //features
+            "tar_data_names": ["tag_shuffle_merge_train.target"],                      //labels, list支持multitask，所有支持multitask的list_len必须相同
+            "encoding" : "gbk",
+            "hdf5_name"     : "train.hdf5"                      //生成的二进制文件名，一般不需要修改
+        },
+        "dev_data_info":    
+        {
+            "base_dir"      : "../data/20180319_f11/dev_file",
+            "fea_data_name" : "tag_shuffle_validation_common.feature",
+            "tar_data_names": ["tag_shuffle_validation_common.target"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "dev.hdf5"
+        },
+        "adapt_data_info":  
+        {
+            "base_dir"      : "../data/20180319_f11/test_file",
+            "fea_data_name" : "tag_shuffle_adapt_test.feature",
+            "tar_data_names": ["tag_shuffle_adapt_test.target"],
+            "encoding" : "gbk",
+            "hdf5_name"     : "adapt.hdf5"
+        },
+        "novel_data_info":  
+        {
+            "base_dir"      : "",
+            "fea_data_name" : "",
+            "tar_data_names": [""],
+            "encoding" : "gbk",
+            "hdf5_name"     : "novel.hdf5"
+        }
+    },
+    "dict":
+    {
+        "base_dir"          : "../dict",                   //特征词典根目录
+        "word_dict"         : "char.dict",
+        "wordvec_dict"      : "word2vec_decompress.feat",
+        "token_dict"        : "seg_token.dict",
+        "prop_dict"         : "seg_prop.dict",
+        "prosody_dict"      : "prosody_label.dict",
+        "feature_names"     : ["wordvec", "token", "prop"],     //特征列表，与文本数据相一致
+        "mark_names"        : ["prosody"]                       //label列表，支持multitask，所有支持multitask的list_len必须相同
+    },
+    "model": 
+    {
+        "name"              : "DenselyAttentionNet",
+        "losses":
+        [
+            {
+                "type"          : "softmax_ce",
+                "alpha"         : [1.0, 1.0, 1.0, 0.65, 1.0],
+                "label_smooth"  : 0.0,
+                "use_crf"       : false
+            }
+        ],
+        "task_weights"          : [1.0, 1.0, 1.0],        //任务权重，multitask用，所有支持multitask的list_len必须相同
+        "mean_var_path"     : "../data/prosody_128dim_common_f11.mean_var",
+        "prenet"            :
+        {
+            "layer_type"    : "conv1d",
+            "num_layers"    : 2,
+            "channels"      : 128,
+            "activation"    : "relu",
+            "initializer"   : "xavier_normal",
+            "use_bn"        : true
+        },
+        "hidden_layer" :                                        //隐含层：LIST，按列表顺序构建网络
+        [
+			{
+                "layer_type"    : "densely_cnn_block",
+                "kernel_size"   : 3,
+				"channels"		: 128,
+				"dilation_rate"	: 1,
+                "activation"    : "relu",
+                "initiailzer"   : "he_normal",
+                "use_bn"        : true
+            },
+			{
+                "layer_type"    : "densely_cnn_block",
+                "kernel_size"   : 3,
+				"channels"		: 128,
+				"dilation_rate"	: 2,
+                "activation"    : "relu",
+                "initiailzer"   : "he_normal",
+                "use_bn"        : true
+            },
+            {
+                "layer_type"    : "densely_cnn_block",
+                "kernel_size"   : 3,
+				"channels"		: 128,
+				"dilation_rate"	: 4,
+                "activation"    : "relu",
+                "initiailzer"   : "he_normal",
+                "use_bn"        : true
+            },
+            {
+                "layer_type"    : "densely_cnn_block",
+                "kernel_size"   : 3,
+				"channels"		: 128,
+				"dilation_rate"	: 6,
+                "activation"    : "relu",
+                "initiailzer"   : "he_normal",
+                "use_bn"        : true
+            },
+            {
+                "layer_type"    : "densely_cnn_block",
+                "kernel_size"   : 3,
+				"channels"		: 128,
+				"dilation_rate"	: 8,
+                "activation"    : "relu",
+                "initiailzer"   : "he_normal",
+                "use_bn"        : true
+            },
+            //{
+            //    "layer_type"    : "group_attention",
+            //    "channels"      : 128,
+            //    "groups"        : 7,
+            //    "activation"    : "relu",
+            //    "use_bn"        : true
+            //},
+            {
+                "layer_type"    : "attention",
+                "groups"        : 7,
+                "highway":
+                {
+                    "layer_type"    : "highway",
+                    "num_layers"    : 2,
+                    "activation"    :"relu"
+                }
+            },
+            {
+                "layer_type"    : "rnn",            //RNN
+                "struct"        : "bi",             //bi --- 双向, uni or ""--- 单向
+                "cell_name"     : "GRUCell",
+                "cell_params"   :
+                {
+                    "num_units"         : 64,
+                    "use_peepholes"     : true,
+                    "forget_bias"       : 0.0,
+                    "num_proj"          : 128,
+                    "activation"        : "tanh"
+                },
+                "dropout_params":
+                {
+                    "input_keep_prob"   : 0.9,
+                    "output_keep_prob"  : 0.9,
+                    "state_keep_prob"   : 0.95,
+                    "variational_recurrent" : true
+                }
+            }
+			
+        ],
+        "output_layer"  :                                    //输出层list，支持multitask，所有支持multitask的list_len必须相同
+        [
+            {
+                "layer_type"    : "fc",
+                "num_units"     : 64,
+                "activation"    : "linear"
+            }
+        ]
+    }
+}
