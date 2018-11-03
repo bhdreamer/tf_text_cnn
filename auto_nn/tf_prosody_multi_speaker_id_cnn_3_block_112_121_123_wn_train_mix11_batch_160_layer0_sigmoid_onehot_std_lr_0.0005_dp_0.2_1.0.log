@@ -1,0 +1,93 @@
+Fri, 02 Nov 2018 22:26:04 logger_wrapper.py[line:124] INFO [INFO] feature_dim =
+Fri, 02 Nov 2018 22:26:04 logger_wrapper.py[line:124] INFO [INFO] target_dims = prosody:6
+Fri, 02 Nov 2018 22:26:04 logger_wrapper.py[line:124] INFO [INFO] CUDA_VISIBLE_DEVICES: 2
+Fri, 02 Nov 2018 22:26:04 logger_wrapper.py[line:124] INFO save_dir = /Users/niezhipeng/MyProgram/Python Scripts/baidu/personal-code-nzp/tf_training/output/prosody_multi_speaker_id_cnn_3_block_112_121_123_wn_train_mix11_batch_160_layer0_sigmoid_onehot_std_lr_0.0005_dp_0.2_1.0
+Fri, 02 Nov 2018 22:26:07 logger_wrapper.py[line:124] INFO a new model will be built
+Fri, 02 Nov 2018 22:26:10 logger_wrapper.py[line:124] INFO train dataset: size = 1683(sentences), batch_size = 160, batch_num = 11
+Fri, 02 Nov 2018 22:26:10 logger_wrapper.py[line:124] INFO dev dataset: name = train, size = 1683(sentences), batch_size = 512, batch_num = 4
+Fri, 02 Nov 2018 22:26:10 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 0 ======================
+Fri, 02 Nov 2018 22:26:10 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:26:20 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 1.79706
+Fri, 02 Nov 2018 22:26:20 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:26:20 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:26:20 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.04242, r = 0.98571, f1 = 0.08134, f0_5 = 0.05246
+Fri, 02 Nov 2018 22:26:20 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 1 ======================
+Fri, 02 Nov 2018 22:26:35 logger_wrapper.py[line:124] INFO | train speed: 14.691 sec/epoch
+Fri, 02 Nov 2018 22:26:35 logger_wrapper.py[line:124] INFO | train loss: 1.46277
+Fri, 02 Nov 2018 22:26:35 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:26:44 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 1.40242
+Fri, 02 Nov 2018 22:26:44 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:26:44 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:26:44 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:26:44 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 2 ======================
+Fri, 02 Nov 2018 22:26:59 logger_wrapper.py[line:124] INFO | train speed: 14.175 sec/epoch
+Fri, 02 Nov 2018 22:26:59 logger_wrapper.py[line:124] INFO | train loss: 1.31518
+Fri, 02 Nov 2018 22:26:59 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:27:08 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 1.31666
+Fri, 02 Nov 2018 22:27:08 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:08 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:08 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:08 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 3 ======================
+Fri, 02 Nov 2018 22:27:22 logger_wrapper.py[line:124] INFO | train speed: 13.646 sec/epoch
+Fri, 02 Nov 2018 22:27:22 logger_wrapper.py[line:124] INFO | train loss: 1.19878
+Fri, 02 Nov 2018 22:27:22 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:27:31 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 1.29048
+Fri, 02 Nov 2018 22:27:31 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:31 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:31 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:31 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 4 ======================
+Fri, 02 Nov 2018 22:27:45 logger_wrapper.py[line:124] INFO | train speed: 13.672 sec/epoch
+Fri, 02 Nov 2018 22:27:45 logger_wrapper.py[line:124] INFO | train loss: 1.12924
+Fri, 02 Nov 2018 22:27:45 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:27:54 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 1.10299
+Fri, 02 Nov 2018 22:27:54 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:54 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:54 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:27:54 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 5 ======================
+Fri, 02 Nov 2018 22:28:08 logger_wrapper.py[line:124] INFO | train speed: 13.476 sec/epoch
+Fri, 02 Nov 2018 22:28:08 logger_wrapper.py[line:124] INFO | train loss: 1.01624
+Fri, 02 Nov 2018 22:28:08 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:28:17 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 0.93046
+Fri, 02 Nov 2018 22:28:17 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:28:17 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:28:17 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:28:17 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 6 ======================
+Fri, 02 Nov 2018 22:28:31 logger_wrapper.py[line:124] INFO | train speed: 13.707 sec/epoch
+Fri, 02 Nov 2018 22:28:31 logger_wrapper.py[line:124] INFO | train loss: 0.93178
+Fri, 02 Nov 2018 22:28:31 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:28:41 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 0.85582
+Fri, 02 Nov 2018 22:28:41 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:28:41 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:28:41 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.15385, r = 0.00407, f1 = 0.00794, f0_5 = 0.01842
+Fri, 02 Nov 2018 22:28:41 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 7 ======================
+Fri, 02 Nov 2018 22:28:55 logger_wrapper.py[line:124] INFO | train speed: 13.791 sec/epoch
+Fri, 02 Nov 2018 22:28:55 logger_wrapper.py[line:124] INFO | train loss: 0.86923
+Fri, 02 Nov 2018 22:28:55 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:29:04 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 0.81127
+Fri, 02 Nov 2018 22:29:04 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.73265, r = 0.14450, f1 = 0.24139, f0_5 = 0.40387
+Fri, 02 Nov 2018 22:29:04 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:29:04 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.24074, r = 0.02648, f1 = 0.04771, f0_5 = 0.09194
+Fri, 02 Nov 2018 22:29:04 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 8 ======================
+Fri, 02 Nov 2018 22:29:18 logger_wrapper.py[line:124] INFO | train speed: 13.619 sec/epoch
+Fri, 02 Nov 2018 22:29:18 logger_wrapper.py[line:124] INFO | train loss: 0.82097
+Fri, 02 Nov 2018 22:29:18 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:29:27 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 0.75220
+Fri, 02 Nov 2018 22:29:27 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.76406, r = 0.15158, f1 = 0.25298, f0_5 = 0.42257
+Fri, 02 Nov 2018 22:29:27 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:29:27 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.33333, r = 0.03259, f1 = 0.05937, f0_5 = 0.11713
+Fri, 02 Nov 2018 22:29:27 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 9 ======================
+Fri, 02 Nov 2018 22:29:41 logger_wrapper.py[line:124] INFO | train speed: 13.627 sec/epoch
+Fri, 02 Nov 2018 22:29:41 logger_wrapper.py[line:124] INFO | train loss: 0.77056
+Fri, 02 Nov 2018 22:29:41 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:29:51 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 0.68779
+Fri, 02 Nov 2018 22:29:51 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.77977, r = 0.15063, f1 = 0.25249, f0_5 = 0.42486
+Fri, 02 Nov 2018 22:29:51 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.00000, r = 0.00000, f1 = 0.00000, f0_5 = 0.00000
+Fri, 02 Nov 2018 22:29:51 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.41304, r = 0.07739, f1 = 0.13036, f0_5 = 0.22119
+Fri, 02 Nov 2018 22:29:51 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 10 ======================
+Fri, 02 Nov 2018 22:30:04 logger_wrapper.py[line:124] INFO | train speed: 13.444 sec/epoch
+Fri, 02 Nov 2018 22:30:04 logger_wrapper.py[line:124] INFO | train loss: 0.71350
+Fri, 02 Nov 2018 22:30:05 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 22:30:14 logger_wrapper.py[line:124] INFO | dev_loss: name = train, loss = 0.65733
+Fri, 02 Nov 2018 22:30:14 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.76748, r = 0.19660, f1 = 0.31302, f0_5 = 0.48551
+Fri, 02 Nov 2018 22:30:14 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.44444, r = 0.00206, f1 = 0.00411, f0_5 = 0.01013
+Fri, 02 Nov 2018 22:30:14 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.42520, r = 0.10998, f1 = 0.17476, f0_5 = 0.27027

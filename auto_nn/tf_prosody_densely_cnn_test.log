@@ -1,0 +1,14 @@
+Fri, 02 Nov 2018 16:26:06 logger_wrapper.py[line:124] INFO [INFO] feature_dim =
+Fri, 02 Nov 2018 16:26:06 logger_wrapper.py[line:124] INFO [INFO] target_dims = prosody:5
+Fri, 02 Nov 2018 16:26:07 logger_wrapper.py[line:124] INFO [INFO] CUDA_VISIBLE_DEVICES: 3
+Fri, 02 Nov 2018 16:26:07 logger_wrapper.py[line:124] INFO save_dir = /Users/niezhipeng/MyProgram/Python Scripts/baidu/personal-code-nzp/tf_training/output/prosody_densely_cnn_test
+Fri, 02 Nov 2018 16:26:09 logger_wrapper.py[line:124] INFO a new model will be built
+Fri, 02 Nov 2018 16:26:32 logger_wrapper.py[line:124] INFO train dataset: size = 12808(sentences), batch_size = 160, batch_num = 81
+Fri, 02 Nov 2018 16:26:34 logger_wrapper.py[line:124] INFO dev dataset: name = adapt, size = 1687(sentences), batch_size = 512, batch_num = 4
+Fri, 02 Nov 2018 16:26:34 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 0 ======================
+Fri, 02 Nov 2018 16:26:35 logger_wrapper.py[line:124] INFO |---------------------------------------------------------------
+Fri, 02 Nov 2018 16:26:41 logger_wrapper.py[line:124] INFO | dev_loss: name = adapt, loss = 5.13064
+Fri, 02 Nov 2018 16:26:41 logger_wrapper.py[line:124] INFO |	 "#1": p = 0.48060, r = 0.07269, f1 = 0.12627, f0_5 = 0.22644
+Fri, 02 Nov 2018 16:26:41 logger_wrapper.py[line:124] INFO |	 "#2": p = 0.19860, r = 0.91885, f1 = 0.32660, f0_5 = 0.23552
+Fri, 02 Nov 2018 16:26:41 logger_wrapper.py[line:124] INFO |	 "#3": p = 0.02500, r = 0.00204, f1 = 0.00377, f0_5 = 0.00769
+Fri, 02 Nov 2018 16:26:41 logger_wrapper.py[line:124] INFO |==================== train info: epoch: 1 ======================
